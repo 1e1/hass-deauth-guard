@@ -1,0 +1,70 @@
+{
+  "title": "Deauth Guard",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Deauth Guard",
+        "description": "Radio 1 : « Simulation » pour les tests sans matériel, ou une interface réelle quand la capture existera. Les radios 2 et 3 (optionnelles) ajoutent d’autres interfaces sur la même instance ; chaque radio a sa propre liste de canaux (vide = tous sur cette interface). Les règles d’alerte sont communes. Lignes à 0 : un seul premier événement bus par rechargement (hors simulation) ; ou définissez un effectif et une fenêtre (deux règles optionnelles).",
+        "data": {
+          "radio1_interface": "Radio 1 — interface",
+          "radio1_channels": "Radio 1 — canaux (vide = tous sur cette interface)",
+          "radio2_interface": "Radio 2 — interface (optionnel)",
+          "radio2_channels": "Radio 2 — canaux (vide = tous)",
+          "radio3_interface": "Radio 3 — interface (optionnel)",
+          "radio3_channels": "Radio 3 — canaux (vide = tous)",
+          "interface": "Interface Wi‑Fi / capture",
+          "channels": "Canaux à surveiller (multi-sélection ; vide = tous)",
+          "simulation_interval_seconds": "Secondes entre événements simulés (simulation uniquement)",
+          "history_max_entries": "Nombre maximal d'entrées d'historique (stockage local)",
+          "ar1_min": "Règle d'alerte 1 — nombre minimum de deauth",
+          "ar1_sec": "Règle d'alerte 1 — fenêtre glissante (secondes)",
+          "ar2_min": "Règle d'alerte 2 — nombre minimum de deauth",
+          "ar2_sec": "Règle d'alerte 2 — fenêtre glissante (secondes)"
+        }
+      }
+    },
+    "abort": {
+      "single_instance_allowed": "Une seule instance Deauth Guard est autorisée."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Options Deauth Guard",
+        "data": {
+          "radio1_interface": "Radio 1 — interface",
+          "radio1_channels": "Radio 1 — canaux (vide = tous sur cette interface)",
+          "radio2_interface": "Radio 2 — interface (optionnel)",
+          "radio2_channels": "Radio 2 — canaux (vide = tous)",
+          "radio3_interface": "Radio 3 — interface (optionnel)",
+          "radio3_channels": "Radio 3 — canaux (vide = tous)",
+          "interface": "Interface Wi‑Fi / capture",
+          "channels": "Canaux à surveiller (multi-sélection ; vide = tous)",
+          "simulation_interval_seconds": "Secondes entre événements simulés (simulation uniquement)",
+          "history_max_entries": "Nombre maximal d'entrées d'historique (stockage local)",
+          "ar1_min": "Règle d'alerte 1 — nombre minimum de deauth",
+          "ar1_sec": "Règle d'alerte 1 — fenêtre glissante (secondes)",
+          "ar2_min": "Règle d'alerte 2 — nombre minimum de deauth",
+          "ar2_sec": "Règle d'alerte 2 — fenêtre glissante (secondes)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "last_event": {
+        "name": "Dernier événement deauth"
+      }
+    }
+  },
+  "services": {
+    "get_history": {
+      "name": "Lire l'historique",
+      "description": "Renvoie les enregistrements de détection récents stockés par l'intégration."
+    },
+    "clear_history": {
+      "name": "Effacer l'historique",
+      "description": "Supprime tout l'historique local de l'intégration (pas l'historique du module Enregistreur)."
+    }
+  }
+}

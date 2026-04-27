@@ -1,0 +1,20 @@
+# Service actions (hassfest + UI; get_history supports structured response)
+get_history:
+  name: Get history
+  description: Return recent detection records stored by the integration.
+  fields: {}
+  response:
+    schema:
+      type: object
+      required: [entries]
+      additionalProperties: false
+      properties:
+        entries:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+clear_history:
+  name: Clear history
+  description: Remove all records from the integration local store (not the recorder).
+  fields: {}

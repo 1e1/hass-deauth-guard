@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "deauth-guard"
+version = "0.2.0"
+description = "Home Assistant custom integration for WiFi deauth awareness (deauth_guard)"
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "MIT" }
+
+[project.optional-dependencies]
+# No `homeassistant` wheel required: tests use `tests/ha_stubs.py` shims.
+dev = [
+  "pytest>=8.0.0",
+  "pytest-asyncio>=0.24.0",
+  "pytest-cov>=5.0.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+asyncio_mode = "auto"
+addopts = "-q --import-mode=importlib"
+
+[tool.coverage.run]
+source = ["custom_components/deauth_guard"]
+omit = ["*/tests/*"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 88
+src = ["custom_components/deauth_guard"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+
+[tool.ruff.lint.per-file-ignores]
+"custom_components/deauth_guard/**/__init__.py" = ["E402"]
