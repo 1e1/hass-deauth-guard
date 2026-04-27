@@ -1,0 +1,15 @@
+---
+description: Home Assistant deauth_guard integration — architecture, docs language, and constraints
+globs: custom_components/deauth_guard/**/*.py
+alwaysApply: false
+---
+
+# deauth_guard project rules
+
+- This is a **Home Assistant custom integration** under `custom_components/deauth_guard/`. Follow patterns from [Home Assistant developer docs](https://developers.home-assistant.io/).
+- **Blocking work** (packet capture, file I/O beyond HA helpers) runs in **executors**; the event loop must stay non-blocking.
+- **Public automation contract**: bus event types and service schemas in `services.yaml` are stable API; document breaking changes in `docs/DEVELOPER.md`.
+- **User/developer docs** in `docs/` are **English** only.
+- Prefer **optional** heavy dependencies (e.g. Scapy); integration must load when they are missing (e.g. simulation or degraded mode).
+- **Security**: do not add offensive tooling; monitoring only on authorized networks. Document privilege requirements (e.g. `CAP_NET_RAW` / root for monitor mode) in developer docs, not in marketing tone.
+- **HACS / hassfest**: before release, follow `.cursor/skills/hass-community-validation/SKILL.md` and keep `hacs.json`, `brand/icon.png`, `manifest.json`, and `services.yaml` aligned with CI (`.github/workflows/validate.yml`).

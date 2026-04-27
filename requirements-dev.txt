@@ -1,0 +1,6 @@
+# Development / CI: run `python -m pip install -r requirements-dev.txt` then `python -m pytest tests/`
+# voluptuous: same as Home Assistant; required because importing `custom_components.deauth_guard` runs `__init__.py`
+voluptuous>=0.15.0
+pytest>=8.0.0
+pytest-asyncio>=0.24.0
+pytest-cov>=5.0.0

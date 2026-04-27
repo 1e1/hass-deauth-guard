@@ -1,0 +1,70 @@
+{
+  "title": "Deauth Guard",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Deauth Guard",
+        "description": "Radio 1: choose Simulation for tests without a radio, or a real interface when capture is available. Optional Radios 2 and 3 add more Wi‑Fi hardware in the same Home Assistant instance; each radio has its own channel list (empty = all reported channels on that interface). Alert rules are shared. Rule rows at 0: only the first bus event per reload (not simulation); or set a count and time window (two optional rules).",
+        "data": {
+          "radio1_interface": "Radio 1 — interface",
+          "radio1_channels": "Radio 1 — channels (empty = all on this interface)",
+          "radio2_interface": "Radio 2 — interface (optional)",
+          "radio2_channels": "Radio 2 — channels (empty = all)",
+          "radio3_interface": "Radio 3 — interface (optional)",
+          "radio3_channels": "Radio 3 — channels (empty = all)",
+          "interface": "Wi‑Fi / capture interface",
+          "channels": "Channels to observe (multi-select; empty = all)",
+          "simulation_interval_seconds": "Seconds between simulated events (simulation only)",
+          "history_max_entries": "Maximum history entries (stored locally)",
+          "ar1_min": "Alert rule 1 — minimum deauth count",
+          "ar1_sec": "Alert rule 1 — sliding window (seconds)",
+          "ar2_min": "Alert rule 2 — minimum deauth count",
+          "ar2_sec": "Alert rule 2 — sliding window (seconds)"
+        }
+      }
+    },
+    "abort": {
+      "single_instance_allowed": "Only a single Deauth Guard instance is allowed."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Deauth Guard options",
+        "data": {
+          "radio1_interface": "Radio 1 — interface",
+          "radio1_channels": "Radio 1 — channels (empty = all on this interface)",
+          "radio2_interface": "Radio 2 — interface (optional)",
+          "radio2_channels": "Radio 2 — channels (empty = all)",
+          "radio3_interface": "Radio 3 — interface (optional)",
+          "radio3_channels": "Radio 3 — channels (empty = all)",
+          "interface": "Wi‑Fi / capture interface",
+          "channels": "Channels to observe (multi-select; empty = all)",
+          "simulation_interval_seconds": "Seconds between simulated events (simulation only)",
+          "history_max_entries": "Maximum history entries (stored locally)",
+          "ar1_min": "Alert rule 1 — minimum deauth count",
+          "ar1_sec": "Alert rule 1 — sliding window (seconds)",
+          "ar2_min": "Alert rule 2 — minimum deauth count",
+          "ar2_sec": "Alert rule 2 — sliding window (seconds)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "last_event": {
+        "name": "Last deauth event"
+      }
+    }
+  },
+  "services": {
+    "get_history": {
+      "name": "Get history",
+      "description": "Return recent detection records stored by the integration."
+    },
+    "clear_history": {
+      "name": "Clear history",
+      "description": "Remove all records from the integration local store (not the recorder)."
+    }
+  }
+}

@@ -1,0 +1,8 @@
+get_history:
+  name: Get history
+  description: Return recent detection records stored by the integration.
+  fields: {}
+clear_history:
+  name: Clear history
+  description: Remove all records from the integration local store (not the recorder).
+  fields: {}
