@@ -1,0 +1,14 @@
+{
+  "domain": "deauth_guard",
+  "name": "Deauth Guard",
+  "codeowners": ["@agerlier"],
+  "config_flow": true,
+  "dependencies": [],
+  "documentation": "https://github.com/agerlier/ha-deauth",
+  "integration_type": "device",
+  "iot_class": "local_push",
+  "issue_tracker": "https://github.com/agerlier/ha-deauth/issues",
+  "requirements": [],
+  "single_config_entry": true,
+  "version": "0.3.1"
+}
