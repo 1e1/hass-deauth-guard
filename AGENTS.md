@@ -24,7 +24,7 @@ This repository is a **Home Assistant custom integration** that detects 802.11 d
 ## Event and automation contract
 
 - Fires Home Assistant bus events for detections. Automation authors depend on **stable event `type` values** in the payload; treat them as a public API and bump version on breaking changes.
-- Prefer **structured data** (MAC addresses normalized, reason codes, RSSI, **802.11 channel**, **band** as `2.4_ghz` / `5_ghz` / `6_ghz`, optional **wifi_phy** short label, `emit` when the bus event is a raised alert) over free-form text in event payloads. **Not every** stored history row produces a bus event: **channel filter** and **alert rules** gate `deauth_guard_attack`.
+- Prefer **structured data** (MAC addresses normalized, reason codes, RSSI, **802.11 channel**, **band** using the same string labels as `const` e.g. **`2.4 GHz` / `5 GHz` / `6 GHz`**, optional **wifi_phy** short label, `emit` when the bus event is a raised alert) over free-form text in event payloads. **Not every** stored history row produces a bus event: **channel filter** and **alert rules** gate `deauth_guard_attack`.
 
 ## Optional dependencies
 

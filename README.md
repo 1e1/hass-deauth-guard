@@ -2,10 +2,10 @@
 
 **Deauth Guard** (`deauth_guard`) is a [Home Assistant](https://www.home-assistant.io/) custom integration for **defensive awareness** of activity consistent with **802.11 deauthentication** frames, using a system that has a separate **Ethernet** uplink and a **WiFi** interface usable for monitor-mode capture (future releases).
 
-- **Back-office (current)**: config flow, bus events (`deauth_guard_attack`), bounded on-disk history, services, and a status sensor. **Simulation mode** is enabled by default for safe testing.
+- **Back-office (current)**: config flow (single entry, up to **three** Wi‑Fi source slots with per-radio channels), bus events (`deauth_guard_attack`), bounded on-disk history, services, and a status sensor. **Simulation** is the default (no radio required).
 - **GUI**: deferred (a simple control panel may follow later).
 
-**Documentation (English only)**
+**Documentation**
 
 - [User manual](docs/USER.md) — install, services, events, limitations.
 - [Developer manual](docs/DEVELOPER.md) — architecture, APIs, extension points.
@@ -20,18 +20,20 @@
 **Install (manual copy)**
 
 1. Copy `custom_components/deauth_guard/` into your Home Assistant configuration directory: `config/custom_components/deauth_guard/`.
+
+OR 
+
+[![Open your Home Assistant instance and show the add add-on repository dialog with a specific repository URL pre-filled.](https://my.home-assistant.io/badges/supervisor_add_addon_repository.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2F1e1%2Fhass-deauth-guard)
+
 2. Restart Home Assistant.
+
 3. **Settings → Devices & services → Add integration → Deauth Guard** (or search by domain `deauth_guard`).
 
-HACS support may be added in a follow-up (metadata, validation).
+**Translations:** `translations/en.json` and `translations/fr.json` for the config flow, services, and entity names (UI language follows the Home Assistant user profile).
 
-**Translations:** `translations/en.json` and **`translations/fr.json`** for the config flow, services, and entity names (UI language follows the Home Assistant user profile).
+**Tests:** `pip install -r requirements-dev.txt` then `python -m pytest tests/ -v` (uses `tests/ha_stubs.py` + `voluptuous`; no full `homeassistant` wheel required).
 
-**Tests:** `pip install -r requirements-dev.txt` then `python -m pytest tests/ -v` (uses lightweight `homeassistant` stubs in `tests/ha_stubs.py`; no full HA wheel required).
-
-**HACS / hassfest:** the repo includes `hacs.json`, `custom_components/deauth_guard/brand/icon.png`, and GitHub Actions **Validate** (hassfest + HACS). To run **hassfest locally with Docker** (e.g. on another machine), see [Developer manual — Running hassfest locally with Docker](docs/DEVELOPER.md#running-hassfest-locally-with-docker). For the default HACS store, also add a **GitHub Release**, **repository description**, **topics**, and enable **issues** (see [HACS include](https://hacs.xyz/docs/publish/include)).
-
-**License:** see `LICENSE` (intended: MIT; adjust to match your preference before publishing).
+**License:** see `LICENSE` (MIT).
 
 **Disclaimer:** use only on **networks you are authorized to monitor** and in compliance with applicable law. This software does not replace a professional WIDS; it is intended for home automation and lab use.
 

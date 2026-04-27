@@ -8,10 +8,11 @@ This document records decisions that **require your input**. Until each row is *
 | D2 | Frame capture stack: Scapy vs `tcpdump`/`tshark` vs `libpcap` bindings | **Open** |
 | D3 | Privilege model: host capabilities vs container vs dedicated sidecar | **Open** |
 | D4 | History: fixed ring buffer only vs opt-in `recorder` / long-term DB | **Open** |
+| D5 | Multiple config entries vs **one** entry, several radios in `options["radios"]` | **Resolved: single entry, up to 3 sources** (see `options_util`, config entry version 4) |
 
 ## Channel policy (UI / product)
 
-**Resolved in code (0.2.x):**
+**Resolved in code (current release):**
 
 - **Q: Is it easier to scan only restricted channels?** **Partly yes** for real radios (less spectrum to visit); for pure software filtering, the win is **less noise in HA**, not less RF work unless the sniffer is also channel-limited.
 - **Implementation:** If the user selects one or more channels, **known** frame channel **not in** the set → **drop** (debug log). **Unknown** channel → **keep** (do not hide unknown metadata). **Simulation** does **not** apply the allow-list; synthetic events use **random** channels on a **10s** default cadence.
